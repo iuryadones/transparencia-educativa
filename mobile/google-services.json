@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1031152713592",
+    "firebase_url": "https://apptransparenciaeducativa.firebaseio.com",
+    "project_id": "apptransparenciaeducativa",
+    "storage_bucket": "apptransparenciaeducativa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031152713592:android:209e3b12be1e4463",
+        "android_client_info": {
+          "package_name": "app.transparenciaeducativa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031152713592-ftrl5la7qt7dc7u9h6iu1446f2tauaf0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUAF16nOGrloP3UbJr_v_2hhlZ93Xr0GQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
