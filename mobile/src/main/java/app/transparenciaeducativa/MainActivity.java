@@ -77,6 +77,11 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
+            intent.putExtra("raiz", "brasil");
+            intent.putExtra("regiao", "NORDESTE");
+            intent.putExtra("estado", "PERNAMBUCO");
+            intent.putExtra("municipio", "RECIFE");
+            intent.putExtra("ano", "2017");
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
