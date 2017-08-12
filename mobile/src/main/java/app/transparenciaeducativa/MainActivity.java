@@ -74,20 +74,25 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
+            intent.putExtra("raiz", "brasil");
+            startActivity(intent);
+        } else if (id == R.id.nav_slideshow) {
+            Intent intent = new Intent(getApplicationContext(), ListEstadosActivity.class);
+            intent.putExtra("raiz", "brasil");
+            intent.putExtra("regiao", "NORDESTE");
+            startActivity(intent);
+        } else if (id == R.id.nav_manage) {
+            Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
             intent.putExtra("raiz", "brasil");
             intent.putExtra("regiao", "NORDESTE");
             intent.putExtra("estado", "PERNAMBUCO");
-            intent.putExtra("municipio", "RECIFE");
-            intent.putExtra("ano", "2017");
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
+
 
         } else if (id == R.id.nav_send) {
 
