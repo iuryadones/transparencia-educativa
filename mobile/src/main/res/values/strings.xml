@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Transparência Educativa</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Aberta a navegação</string>
+    <string name="navigation_drawer_close">Fechada a navegação</string>
 
     <string name="action_settings">Configurações</string>
     <string name="title_activity_scrolling">Sobre nós</string>
     <string name="large_text">
-        "Material is the metaphor.\n\n"
+        "Sobre o que fazemos.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
         "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
@@ -98,7 +98,7 @@
     <string name="title_activity_mapa_brasil">Regiões</string>
     <string name="title_activity_list_estados">Estados</string>
     <string name="title_activity_list_municipios">Municípios</string>
-    <string name="title_activity_chat_real_time">ChatRealTimeActivity</string>
-    <string name="title_activity_room_chat_real_time">RoomChatRealTimeActivity</string>
-    <string name="title_activity_graficos">GraficosActivity</string>
+    <string name="title_activity_chat_real_time">Chat</string>
+    <string name="title_activity_room_chat_real_time">Sala do Chat</string>
+    <string name="title_activity_graficos">Gráficos</string>
 </resources>

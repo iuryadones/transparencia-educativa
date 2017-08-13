@@ -69,7 +69,12 @@
         <activity
             android:name=".GraficosActivity"
             android:label="@string/title_activity_graficos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

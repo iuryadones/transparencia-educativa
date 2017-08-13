@@ -34,6 +34,8 @@ public class GraficosActivity extends AppCompatActivity {
             }
         });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         BarChart chart = (BarChart) findViewById(R.id.chart);
 
         BarData data = new BarData(getXAxisValues(), getDataSet());
