@@ -1,13 +1,16 @@
 package app.transparenciaeducativa;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +35,9 @@ public class ListEstadosActivity extends AppCompatActivity {
     private String raiz;
     private String regiao;
     private String estado;
-    private String municipio;
     private String ano;
+    private String transacao;
+    private String municipio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +66,11 @@ public class ListEstadosActivity extends AppCompatActivity {
         raiz = getIntent().getExtras().getString("raiz", "");
         regiao = getIntent().getExtras().getString("regiao", "");
         estado = getIntent().getExtras().getString("estado", "");
-        municipio = getIntent().getExtras().getString("municipio", "");
         ano = getIntent().getExtras().getString("ano", "");
+        transacao = getIntent().getExtras().getString("transacao", "");
+        municipio = getIntent().getExtras().getString("municipio", "");
 
-        base = root.child(raiz).child(regiao).child(estado).child(municipio).child(ano);
-
+        base = root.child(raiz).child(regiao);
         base.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,6 +96,24 @@ public class ListEstadosActivity extends AppCompatActivity {
 
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                estado = ((TextView)view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
+                intent.putExtra("raiz", raiz);
+                intent.putExtra("regiao", regiao);
+                intent.putExtra("estado",estado);
+                intent.putExtra("ano", ano);
+                intent.putExtra("transacao", transacao);
+                intent.putExtra("municipio", municipio);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

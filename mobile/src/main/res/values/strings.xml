@@ -98,4 +98,7 @@
     <string name="title_activity_mapa_brasil">Regiões</string>
     <string name="title_activity_list_estados">Estados</string>
     <string name="title_activity_list_municipios">Municípios</string>
+    <string name="title_activity_chat_real_time">ChatRealTimeActivity</string>
+    <string name="title_activity_room_chat_real_time">RoomChatRealTimeActivity</string>
+    <string name="title_activity_graficos">GraficosActivity</string>
 </resources>

@@ -52,21 +52,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -74,28 +59,33 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
+            Intent intent = new Intent(getApplicationContext(), GraficosActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
             intent.putExtra("raiz", "brasil");
+            intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
             Intent intent = new Intent(getApplicationContext(), ListEstadosActivity.class);
             intent.putExtra("raiz", "brasil");
             intent.putExtra("regiao", "NORDESTE");
+            intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
             intent.putExtra("raiz", "brasil");
             intent.putExtra("regiao", "NORDESTE");
             intent.putExtra("estado", "PERNAMBUCO");
+            intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-
-
+            Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(getApplicationContext(), ChatRealTimeActivity.class);
+            intent.putExtra("chat", "chat");
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

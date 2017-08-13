@@ -29,12 +29,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="app.transparenciaeducativa.MainActivity" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MapaBrasilActivity"
@@ -44,12 +38,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="app.transparenciaeducativa.MainActivity" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ListEstadosActivity"
@@ -59,12 +47,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="app.transparenciaeducativa.MapaBrasilActivity" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ListMunicipiosActivity"
@@ -74,13 +56,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="app.transparenciaeducativa.ListEstadosActivity" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity
+            android:name=".ChatRealTimeActivity"
+            android:label="@string/title_activity_chat_real_time"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GraficosActivity"
+            android:label="@string/title_activity_graficos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
