@@ -25,22 +25,14 @@ public class GraficosActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setTitle("Gráficos das despesas");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         BarChart chart = (BarChart) findViewById(R.id.chart);
-
         BarData data = new BarData(getXAxisValues(), getDataSet());
         chart.setData(data);
-        chart.setDescription("My Chart");
+        chart.setDescription("Gráfico de Barras");
         chart.animateXY(2000, 2000);
         chart.invalidate();
     }

@@ -63,18 +63,18 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
-            intent.putExtra("raiz", "brasil");
+            intent.putExtra("raiz", "BRASIL");
             intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
             Intent intent = new Intent(getApplicationContext(), ListEstadosActivity.class);
-            intent.putExtra("raiz", "brasil");
+            intent.putExtra("raiz", "BRASIL");
             intent.putExtra("regiao", "NORDESTE");
             intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
-            intent.putExtra("raiz", "brasil");
+            intent.putExtra("raiz", "BRASIL");
             intent.putExtra("regiao", "NORDESTE");
             intent.putExtra("estado", "PERNAMBUCO");
             intent.putExtra("transacao", "DESPESAS");
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_send) {
             Intent intent = new Intent(getApplicationContext(), ChatRealTimeActivity.class);
-            intent.putExtra("chat", "chat");
+            intent.putExtra("chat", "BATE-PAPO");
             startActivity(intent);
         }
 

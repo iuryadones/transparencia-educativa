@@ -55,8 +55,12 @@ public class ChatRealTimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_real_time);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Salas de Bate-papo");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        chat = getIntent().getExtras().getString("chat","");
+        base = root.child(chat);
 
         nome_sala = (EditText) findViewById(R.id.edit_text_sala);
         listViewSala = (ListView) findViewById(R.id.list_view_sala);
@@ -76,8 +80,10 @@ public class ChatRealTimeActivity extends AppCompatActivity {
                 map.put(nome_sala.getText().toString(), "");
                 base.updateChildren(map);
 
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                nome_sala.setText("");
+
+                Snackbar.make(view, "Criada sala de Bate-papo público.", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).setDuration(1500).show();
             }
         });
 
@@ -135,7 +141,11 @@ public class ChatRealTimeActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
-                request_user_name();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 
