@@ -27,10 +27,16 @@
         "pública de qualidade.\n\n"
     </string>
 
-    <string name="title_activity_mapa_brasil">Regiões</string>
-    <string name="title_activity_list_estados">Estados</string>
-    <string name="title_activity_list_municipios">Municípios</string>
-    <string name="title_activity_chat_real_time">Chat</string>
-    <string name="title_activity_room_chat_real_time">Sala do Chat</string>
-    <string name="title_activity_graficos">Gráficos</string>
+    <string name="title_activity_mapa_brasil">REGIÕES</string>
+    <string name="title_activity_list_estados">ESTADOS</string>
+    <string name="title_activity_list_municipios">MUNICÍPIOS</string>
+    <string name="title_activity_chat_real_time">CHAT</string>
+    <string name="title_activity_room_chat_real_time">SALA</string>
+    <string name="title_activity_graficos">GRÁFICO</string>
+
+    <string name="analisar">Analisar as Despesas</string>
+    <string name="comunicacao">Comunicação</string>
+    <string name="salas_de_debates">Salas de Debates</string>
+    <string name="sobre_nos">Sobre nós</string>
+
 </resources>

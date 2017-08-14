@@ -3,17 +3,14 @@ package app.transparenciaeducativa;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.DialogPreference;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,16 +30,16 @@ import java.util.Set;
 
 public class ChatRealTimeActivity extends AppCompatActivity {
 
-    private FloatingActionButton fab;
     private EditText nome_sala;
-
     private ListView listViewSala;
+    private FloatingActionButton fab;
+
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> list_de_salas = new ArrayList<>();
 
     private String chat;
-    private String sala;
-    private String nome;
+    private String room_name;
+    private String user_name;
 
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
     private DatabaseReference base;
@@ -59,10 +56,12 @@ public class ChatRealTimeActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        chat = getIntent().getExtras().getString("chat","");
+        chat = getIntent().getExtras().getString("chat", "");
+
         base = root.child(chat);
 
-        nome_sala = (EditText) findViewById(R.id.edit_text_sala);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        nome_sala = (EditText) findViewById(R.id.msg_input);
         listViewSala = (ListView) findViewById(R.id.list_view_sala);
 
         arrayAdapter = new ArrayAdapter<String>(
@@ -71,7 +70,6 @@ public class ChatRealTimeActivity extends AppCompatActivity {
                 list_de_salas);
         listViewSala.setAdapter(arrayAdapter);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,16 +108,19 @@ public class ChatRealTimeActivity extends AppCompatActivity {
             }
         });
 
-//        listViewSala.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(getApplicationContext(), SalaChatRealTimeActivity.class);
-//                intent.putExtra("sala", ((TextView) view).getText().toString());
-//                intent.putExtra("nome", nome);
-//                startActivity(intent);
-//            }
-//        });
+        listViewSala.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                room_name = ((TextView) view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), RoomChatRealTimeActivity.class);
+                intent.putExtra("chat", chat);
+                intent.putExtra("room_name", room_name);
+                intent.putExtra("user_name", user_name);
+                startActivity(intent);
+            }
+        });
     }
 
     private void request_user_name(){
@@ -132,7 +133,7 @@ public class ChatRealTimeActivity extends AppCompatActivity {
         builder.setPositiveButton("Enviar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                nome = input_field.getText().toString();
+                user_name = input_field.getText().toString();
             }
 
         });

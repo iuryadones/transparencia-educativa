@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_transparecia_educativa_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_transparecia_educativa_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -71,9 +71,18 @@
             android:label="@string/title_activity_graficos"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="app.transparenciaeducativa.MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RoomChatRealTimeActivity"
+            android:label="@string/title_activity_room_chat_real_time"
+            android:parentActivityName=".ChatRealTimeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.ChatRealTimeActivity" />
         </activity>
     </application>
 

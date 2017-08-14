@@ -55,14 +55,6 @@ public class ListMunicipiosActivity extends AppCompatActivity implements Adapter
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         raiz = getIntent().getExtras().getString("raiz", "");
@@ -115,22 +107,22 @@ public class ListMunicipiosActivity extends AppCompatActivity implements Adapter
                 list_base);
         listView.setAdapter(arrayAdapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                municipio = ((TextView)view).getText().toString();
-//
-//                Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
-//                intent.putExtra("raiz", raiz);
-//                intent.putExtra("regiao", regiao);
-//                intent.putExtra("estado",estado);
-//                intent.putExtra("ano", ano);
-//                intent.putExtra("transacao", transacao);
-//                intent.putExtra("municipio", municipio);
-//                startActivity(intent);
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                municipio = ((TextView)view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), GraficosActivity.class);
+                intent.putExtra("raiz", raiz);
+                intent.putExtra("regiao", regiao);
+                intent.putExtra("estado",estado);
+                intent.putExtra("ano", ano);
+                intent.putExtra("transacao", transacao);
+                intent.putExtra("municipio", municipio);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -144,9 +136,9 @@ public class ListMunicipiosActivity extends AppCompatActivity implements Adapter
         Toast.makeText(context, "Selecionado: " + ano, Toast.LENGTH_LONG).show();
 
         try {
-            setTitle(estado + " ano " + ano);
+            setTitle(estado + " - " + ano);
         } catch (RuntimeException e) {
-            setTitle(estado);
+            setTitle(estado + " - " + getTitle().toString());
         }
 
         base = root.child(raiz).child(regiao).child(estado).child(ano).child(transacao);

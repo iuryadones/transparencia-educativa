@@ -27,8 +27,12 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Escrever algo depois.", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
+                intent.putExtra("raiz", "BRASIL");
+                intent.putExtra("transacao", "DESPESAS");
+                startActivity(intent);
             }
         });
 
@@ -58,31 +62,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Intent intent = new Intent(getApplicationContext(), GraficosActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_analisar) {
             Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
             intent.putExtra("raiz", "BRASIL");
             intent.putExtra("transacao", "DESPESAS");
             startActivity(intent);
-        } else if (id == R.id.nav_slideshow) {
-            Intent intent = new Intent(getApplicationContext(), ListEstadosActivity.class);
-            intent.putExtra("raiz", "BRASIL");
-            intent.putExtra("regiao", "NORDESTE");
-            intent.putExtra("transacao", "DESPESAS");
-            startActivity(intent);
-        } else if (id == R.id.nav_manage) {
-            Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
-            intent.putExtra("raiz", "BRASIL");
-            intent.putExtra("regiao", "NORDESTE");
-            intent.putExtra("estado", "PERNAMBUCO");
-            intent.putExtra("transacao", "DESPESAS");
-            startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_sobre_nos) {
             Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_salas_de_debates) {
             Intent intent = new Intent(getApplicationContext(), ChatRealTimeActivity.class);
             intent.putExtra("chat", "BATE-PAPO");
             startActivity(intent);
