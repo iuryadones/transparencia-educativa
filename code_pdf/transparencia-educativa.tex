@@ -1,0 +1,1420 @@
+%{{{ Preamble
+\documentclass[12pt,a4paper]{article}
+%}}}
+%{{{ Packages
+%{{{ geometry
+\usepackage[
+    bottom=2cm,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+]{geometry}
+%}}}
+%{{{ type input font
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[brazil]{varioref}
+\usepackage[utf8]{inputenc}
+%}}}
+%{{{ type output font
+\usepackage{
+    amsfonts,
+    amsmath,
+    amsopn,
+    amssymb,
+    amsthm,
+    latexsym
+}
+\usepackage{indentfirst}
+%}}}
+%{{{ lstlisting code
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+%}}}
+%}}}
+%{{{ Documento
+\lstlistoflistings
+\pagebreak
+
+\begin{document}
+\begin{lstlisting}[caption=./build.gradle]
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.google.gms:google-services:3.1.0'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./gradle.properties]
+# Project-wide Gradle settings.
+
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+org.gradle.jvmargs=-Xmx1536m
+
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. More details, visit
+# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+# org.gradle.parallel=true
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./gradlew.bat]
+@if "%DEBUG%" == "" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS=
+
+set DIRNAME=%~dp0
+if "%DIRNAME%" == "" set DIRNAME=.
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if "%ERRORLEVEL%" == "0" goto init
+
+echo.
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto init
+
+echo.
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
+echo.
+echo Please set the JAVA_HOME variable in your environment to match the
+echo location of your Java installation.
+
+goto fail
+
+:init
+@rem Get command-line arguments, handling Windowz variants
+
+if not "%OS%" == "Windows_NT" goto win9xME_args
+if "%@eval[2+2]" == "4" goto 4NT_args
+
+:win9xME_args
+@rem Slurp the command line arguments.
+set CMD_LINE_ARGS=
+set _SKIP=2
+
+:win9xME_args_slurp
+if "x%~1" == "x" goto execute
+
+set CMD_LINE_ARGS=%*
+goto execute
+
+:4NT_args
+@rem Get arguments from the 4NT Shell from JP Software
+set CMD_LINE_ARGS=%$
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
+
+:end
+@rem End local scope for the variables with windows NT shell
+if "%ERRORLEVEL%"=="0" goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
+exit /b 1
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/google-services.json]
+{
+  "project_info": {
+    "project_number": "1031152713592",
+    "firebase_url": "https://apptransparenciaeducativa.firebaseio.com",
+    "project_id": "apptransparenciaeducativa",
+    "storage_bucket": "apptransparenciaeducativa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031152713592:android:209e3b12be1e4463",
+        "android_client_info": {
+          "package_name": "app.transparenciaeducativa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031152713592-ftrl5la7qt7dc7u9h6iu1446f2tauaf0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUAF16nOGrloP3UbJr_v_2hhlZ93Xr0GQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/proguard-rules.pro]
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in /home/iury/Android/Sdk/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the proguardFiles
+# directive in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/build.gradle]
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "app.transparenciaeducativa"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENCE'
+        exclude 'META-INF/LICENCE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    //    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'com.google.firebase:firebase-database:11.0.2'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.0'
+    compile 'com.androidplot:androidplot-core:1.5.1'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:cardview-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/test/java/app/transparenciaeducativa/ExampleUnitTest.java]
+package app.transparenciaeducativa;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+public class ExampleUnitTest {
+    @Test
+    public void addition_isCorrect() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/ScrollingActivity.java]
+package app.transparenciaeducativa;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+public class ScrollingActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scrolling);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/ChatRealTimeActivity.java]
+package app.transparenciaeducativa;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class ChatRealTimeActivity extends AppCompatActivity {
+
+    private EditText nome_sala;
+    private ListView listViewSala;
+    private FloatingActionButton fab;
+
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> list_de_salas = new ArrayList<>();
+
+    private String chat;
+    private String room_name;
+    private String user_name;
+
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference base;
+
+    private EditText input_field;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat_real_time);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Salas de Bate-papo");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        chat = getIntent().getExtras().getString("chat", "");
+
+        base = root.child(chat);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        nome_sala = (EditText) findViewById(R.id.msg_input);
+        listViewSala = (ListView) findViewById(R.id.list_view_sala);
+
+        arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                list_de_salas);
+        listViewSala.setAdapter(arrayAdapter);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put(nome_sala.getText().toString(), "");
+                base.updateChildren(map);
+
+                nome_sala.setText("");
+
+                Snackbar.make(view, "Criada sala de Bate-papo público.", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).setDuration(1500).show();
+            }
+        });
+
+        request_user_name();
+
+        base.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Set<String> set = new HashSet<String>();
+                Iterator i = dataSnapshot.getChildren().iterator();
+
+                while (i.hasNext()) {
+                    set.add(((DataSnapshot) i.next()).getKey());
+                }
+                list_de_salas.clear();
+                list_de_salas.addAll(set);
+
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        listViewSala.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                room_name = ((TextView) view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), RoomChatRealTimeActivity.class);
+                intent.putExtra("chat", chat);
+                intent.putExtra("room_name", room_name);
+                intent.putExtra("user_name", user_name);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void request_user_name(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Nome: ");
+
+        input_field = new EditText(this);
+
+        builder.setView(input_field);
+        builder.setPositiveButton("Enviar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                user_name = input_field.getText().toString();
+            }
+
+        });
+
+        builder.setNegativeButton("Sair", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        builder.show();
+    }
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/ListEstadosActivity.java]
+package app.transparenciaeducativa;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class ListEstadosActivity extends AppCompatActivity {
+
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference base;
+
+    private ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> list_base = new ArrayList<>();
+
+    // Constates do Intent
+    private String raiz;
+    private String regiao;
+    private String estado;
+    private String ano;
+    private String transacao;
+    private String municipio;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_estados);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        listView = (ListView) findViewById(R.id.list_view);
+        arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                list_base);
+        listView.setAdapter(arrayAdapter);
+
+        raiz = getIntent().getExtras().getString("raiz", "");
+        regiao = getIntent().getExtras().getString("regiao", "");
+        estado = getIntent().getExtras().getString("estado", "");
+        ano = getIntent().getExtras().getString("ano", "");
+        transacao = getIntent().getExtras().getString("transacao", "");
+        municipio = getIntent().getExtras().getString("municipio", "");
+
+        setTitle(regiao + " - " + getTitle().toString());
+
+        base = root.child(raiz).child(regiao);
+        base.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                LinkedList<String> linkedList = new LinkedList<String>();
+                Iterator i = dataSnapshot.getChildren().iterator();
+
+                while (i.hasNext()) {
+
+                    linkedList.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                list_base.clear();
+                list_base.addAll(linkedList);
+
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                estado = ((TextView)view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), ListMunicipiosActivity.class);
+                intent.putExtra("raiz", raiz);
+                intent.putExtra("regiao", regiao);
+                intent.putExtra("estado",estado);
+                intent.putExtra("ano", ano);
+                intent.putExtra("transacao", transacao);
+                intent.putExtra("municipio", municipio);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/MainActivity.java]
+package app.transparenciaeducativa;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Snackbar.make(view, "Escrever algo depois.", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
+                intent.putExtra("raiz", "BRASIL");
+                intent.putExtra("transacao", "DESPESAS");
+                startActivity(intent);
+            }
+        });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_analisar) {
+            Intent intent = new Intent(getApplicationContext(), MapaBrasilActivity.class);
+            intent.putExtra("raiz", "BRASIL");
+            intent.putExtra("transacao", "DESPESAS");
+            startActivity(intent);
+        } else if (id == R.id.nav_sobre_nos) {
+            Intent intent = new Intent(getApplicationContext(), ScrollingActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_salas_de_debates) {
+            Intent intent = new Intent(getApplicationContext(), ChatRealTimeActivity.class);
+            intent.putExtra("chat", "BATE-PAPO");
+            startActivity(intent);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/GraficosActivity.java]
+package app.transparenciaeducativa;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
+public class GraficosActivity extends AppCompatActivity {
+
+    // Constates do Intent
+    private String raiz;
+    private String regiao;
+    private String estado;
+    private String ano;
+    private String transacao;
+    private String municipio;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_graficos);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        raiz = getIntent().getExtras().getString("raiz", "");
+        regiao = getIntent().getExtras().getString("regiao", "");
+        estado = getIntent().getExtras().getString("estado", "");
+        ano = getIntent().getExtras().getString("ano", "");
+        transacao = getIntent().getExtras().getString("transacao", "");
+        municipio = getIntent().getExtras().getString("municipio", "");
+
+        setTitle(municipio + " - " + ano);
+
+        BarChart chart = (BarChart) findViewById(R.id.chart);
+        BarData data = new BarData(getXAxisValues(), getDataSet());
+        chart.setData(data);
+        chart.setDescription("Gráfico de Barras");
+        chart.animateXY(2000, 2000);
+        chart.invalidate();
+    }
+
+    private ArrayList<BarDataSet> getDataSet() {
+        ArrayList<BarDataSet> dataSets = null;
+
+        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
+        BarEntry v1e1 = new BarEntry(110, 0); // Jan
+        valueSet1.add(v1e1);
+        BarEntry v1e2 = new BarEntry(40, 1); // Feb
+        valueSet1.add(v1e2);
+        BarEntry v1e3 = new BarEntry(60, 2); // Mar
+        valueSet1.add(v1e3);
+        BarEntry v1e4 = new BarEntry(30, 3); // Apr
+        valueSet1.add(v1e4);
+        BarEntry v1e5 = new BarEntry(90, 4); // May
+        valueSet1.add(v1e5);
+        BarEntry v1e6 = new BarEntry(100, 5); // Jun
+        valueSet1.add(v1e6);
+
+        ArrayList<BarEntry> valueSet2 = new ArrayList<>();
+        BarEntry v2e1 = new BarEntry(150, 0); // Jan
+        valueSet2.add(v2e1);
+        BarEntry v2e2 = new BarEntry(90, 1); // Feb
+        valueSet2.add(v2e2);
+        BarEntry v2e3 = new BarEntry(120, 2); // Mar
+        valueSet2.add(v2e3);
+        BarEntry v2e4 = new BarEntry(60, 3); // Apr
+        valueSet2.add(v2e4);
+        BarEntry v2e5 = new BarEntry(20, 4); // May
+        valueSet2.add(v2e5);
+        BarEntry v2e6 = new BarEntry(80, 5); // Jun
+        valueSet2.add(v2e6);
+
+        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
+        barDataSet1.setColor(Color.rgb(0, 155, 0));
+        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
+        barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        dataSets = new ArrayList<>();
+        dataSets.add(barDataSet1);
+        dataSets.add(barDataSet2);
+        return dataSets;
+    }
+
+    private ArrayList<String> getXAxisValues() {
+        ArrayList<String> xAxis = new ArrayList<>();
+        xAxis.add("JAN");
+        xAxis.add("FEB");
+        xAxis.add("MAR");
+        xAxis.add("APR");
+        xAxis.add("MAY");
+        xAxis.add("JUN");
+        return xAxis;
+    }
+
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/MapaBrasilActivity.java]
+package app.transparenciaeducativa;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class MapaBrasilActivity extends AppCompatActivity {
+
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference base;
+
+    private ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> list_base = new ArrayList<>();
+
+    // Constates do Intent
+    private String raiz;
+    private String regiao;
+    private String estado;
+    private String ano;
+    private String transacao;
+    private String municipio;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mapa_brasil);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        listView = (ListView) findViewById(R.id.list_view);
+        arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                list_base);
+        listView.setAdapter(arrayAdapter);
+
+        raiz = getIntent().getExtras().getString("raiz", "");
+        regiao = getIntent().getExtras().getString("regiao", "");
+        estado = getIntent().getExtras().getString("estado", "");
+        ano = getIntent().getExtras().getString("ano", "");
+        transacao = getIntent().getExtras().getString("transacao", "");
+        municipio = getIntent().getExtras().getString("municipio", "");
+
+        setTitle(raiz + " - " + getTitle().toString());
+
+        base = root.child(raiz);
+
+        base.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                LinkedList<String> linkedList = new LinkedList<String>();
+                Iterator i = dataSnapshot.getChildren().iterator();
+
+                while (i.hasNext()) {
+
+                    linkedList.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                list_base.clear();
+                list_base.addAll(linkedList);
+
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                regiao = ((TextView)view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), ListEstadosActivity.class);
+                intent.putExtra("raiz", raiz);
+                intent.putExtra("regiao", regiao);
+                intent.putExtra("estado",estado);
+                intent.putExtra("ano", ano);
+                intent.putExtra("transacao", transacao);
+                intent.putExtra("municipio", municipio);
+                startActivity(intent);
+            }
+        });
+    }
+
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/ListMunicipiosActivity.java]
+package app.transparenciaeducativa;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ListMunicipiosActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference base;
+
+    // Spinner
+    private ArrayAdapter<String> dataAdapter;
+    private List<String> list_periodos = new ArrayList<>();
+
+    // ListView
+    private ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> list_base = new ArrayList<>();
+
+    // Constates do Intent
+    private String raiz;
+    private String regiao;
+    private String estado;
+    private String ano;
+    private String transacao;
+    private String municipio;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_municipios);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        raiz = getIntent().getExtras().getString("raiz", "");
+        regiao = getIntent().getExtras().getString("regiao", "");
+        estado = getIntent().getExtras().getString("estado", "");
+        ano = getIntent().getExtras().getString("ano", "");
+        transacao = getIntent().getExtras().getString("transacao", "");
+        municipio = getIntent().getExtras().getString("municipio", "");
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
+
+        dataAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                list_periodos);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+
+        base = root.child(raiz).child(regiao).child(estado);
+        base.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                LinkedList<String> linkedList = new LinkedList<>();
+                Iterator i = dataSnapshot.getChildren().iterator();
+
+                while (i.hasNext()) {
+
+                    linkedList.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                list_periodos.clear();
+                list_periodos.addAll(linkedList);
+                dataAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        listView = (ListView) findViewById(R.id.list_view);
+        arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                list_base);
+        listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                municipio = ((TextView)view).getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(), GraficosActivity.class);
+                intent.putExtra("raiz", raiz);
+                intent.putExtra("regiao", regiao);
+                intent.putExtra("estado",estado);
+                intent.putExtra("ano", ano);
+                intent.putExtra("transacao", transacao);
+                intent.putExtra("municipio", municipio);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        Object itemAtPosition = adapterView.getItemAtPosition(position);
+        Context context = adapterView.getContext();
+
+        ano = itemAtPosition.toString();
+
+        Toast.makeText(context, "Selecionado: " + ano, Toast.LENGTH_LONG).show();
+
+        try {
+            setTitle(estado + " - " + ano);
+        } catch (RuntimeException e) {
+            setTitle(estado + " - " + getTitle().toString());
+        }
+
+        base = root.child(raiz).child(regiao).child(estado).child(ano).child(transacao);
+        base.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                LinkedList<String> linkedList = new LinkedList<>();
+                Iterator i = dataSnapshot.getChildren().iterator();
+
+                while (i.hasNext()) {
+
+                    linkedList.add(((DataSnapshot) i.next()).getKey());
+
+                }
+
+                list_base.clear();
+                list_base.addAll(linkedList);
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/java/app/transparenciaeducativa/RoomChatRealTimeActivity.java]
+package app.transparenciaeducativa;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class RoomChatRealTimeActivity extends AppCompatActivity {
+
+    private FloatingActionButton fab;
+    private EditText input_msg;
+    private TextView chat_conversation;
+
+    private String chat;
+    private String room_name;
+    private String user_name;
+
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().getRoot();
+    private DatabaseReference base;
+    private DatabaseReference message;
+
+    private String temp_key;
+
+    private String chat_msg;
+    private String chat_user_name;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_room_chat_real_time);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        input_msg = (EditText) findViewById(R.id.msg_input);
+        chat_conversation = (TextView) findViewById(R.id.text_view_chat);
+
+        chat = getIntent().getExtras().getString("chat", "");
+        room_name = getIntent().getExtras().getString("room_name", "");
+        user_name = getIntent().getExtras().getString("user_name", "");
+
+        setTitle("Sala - "+ room_name);
+
+        base = root.child(chat).child(room_name);
+
+        fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                Map<String, Object> map = new HashMap<String, Object>();
+                temp_key = base.push().getKey();
+                base.updateChildren(map);
+
+                message = base.child(temp_key);
+
+                Map<String, Object> map2 = new HashMap<String, Object>();
+                map2.put("nome", user_name);
+                map2.put("msg", input_msg.getText().toString());
+                message.updateChildren(map2);
+
+                input_msg.setText("");
+
+            }
+        });
+
+        base.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                append_chat_conversation(dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                append_chat_conversation(dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void append_chat_conversation(DataSnapshot dataSnapshot) {
+
+        if (dataSnapshot.hasChildren()) {
+
+            Iterator i = dataSnapshot.getChildren().iterator();
+
+            while (i.hasNext()){
+
+                chat_msg = (String) ((DataSnapshot)i.next()).getValue();
+                chat_user_name = (String) ((DataSnapshot)i.next()).getValue();
+
+                chat_conversation.append(chat_user_name + ":\n" + chat_msg + "\n\n");
+
+            }
+        }
+    }
+}
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/AndroidManifest.xml]
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.transparenciaeducativa">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_transparecia_educativa_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_transparecia_educativa_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MapaBrasilActivity"
+            android:label="@string/title_activity_mapa_brasil"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ListEstadosActivity"
+            android:label="@string/title_activity_list_estados"
+            android:parentActivityName=".MapaBrasilActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MapaBrasilActivity" />
+        </activity>
+        <activity
+            android:name=".ListMunicipiosActivity"
+            android:label="@string/title_activity_list_municipios"
+            android:parentActivityName=".ListEstadosActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.ListEstadosActivity" />
+        </activity>
+        <activity
+            android:name=".ChatRealTimeActivity"
+            android:label="@string/title_activity_chat_real_time"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".GraficosActivity"
+            android:label="@string/title_activity_graficos"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RoomChatRealTimeActivity"
+            android:label="@string/title_activity_room_chat_real_time"
+            android:parentActivityName=".ChatRealTimeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.transparenciaeducativa.ChatRealTimeActivity" />
+        </activity>
+    </application>
+
+</manifest>
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/res/menu/menu\_scrolling.xml]
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="app.transparenciaeducativa.ScrollingActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/res/menu/main.xml]
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
+\end{lstlisting}
+\pagebreak
+
+\begin{lstlisting}[caption=./mobile/src/main/res/menu/activity\_main\_drawer.xml]
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_analisar"
+            android:icon="?android:attr/actionModeFindDrawable"
+            android:title="@string/analisar" />
+    </group>
+
+    <item android:title="@string/comunicacao">
+        <menu>
+            <item
+                android:id="@+id/nav_sobre_nos"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/sobre_nos" />
+            <item
+                android:id="@+id/nav_salas_de_debates"
+                android:icon="@android:drawable/sym_action_chat"
+                android:title="@string/salas_de_debates" />
+        </menu>
+    </item>
+
+</menu>
+\end{lstlisting}
+\pagebreak
+\end{document}
+%}}}
